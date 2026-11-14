@@ -1,17 +1,27 @@
-﻿import os, json, shutil, math
+﻿import os, json, shutil
 from datetime import datetime
 from fastapi import FastAPI, UploadFile, File, Body
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import FileResponse
-from shapely.geometry import shape, mapping, LineString, Polygon
+from shapely.geometry import shape, mapping
 from shapely.ops import transform, unary_union
 import pyproj
-from backend.pdf_extractor import extract_evidence_from_pdf
+
+try:
+    from pdf_extractor import extract_evidence_from_pdf
+except ImportError:
+    from backend.pdf_extractor import extract_evidence_from_pdf
 
 app = FastAPI(title="SthalaTrace Core Intelligence Engine")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_methods=["*"], allow_headers=["*"])
-os.makedirs("uploads", exist_ok=True)
-STATE_FILE = "data/platform_state.json"
+
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR = os.path.dirname(BASE_DIR)
+IS_VERCEL = bool(os.environ.get("VERCEL"))
+
+UPLOAD_DIR = "/tmp/uploads" if IS_VERCEL else os.path.join(ROOT_DIR, "uploads")
+STATE_FILE = "/tmp/platform_state.json" if IS_VERCEL else os.path.join(ROOT_DIR, "data", "platform_state.json")
+os.makedirs(UPLOAD_DIR, exist_ok=True)
 
 PROJECT_TO_METERS = pyproj.Transformer.from_crs("EPSG:4326", "EPSG:32643", always_xy=True).transform
 PROJECT_TO_WGS84 = pyproj.Transformer.from_crs("EPSG:32643", "EPSG:4326", always_xy=True).transform
@@ -133,12 +143,17 @@ def load_state():
     if os.path.exists(STATE_FILE):
         with open(STATE_FILE, "r", encoding="utf-8") as f:
             return json.load(f)
-    save_state(INITIAL_PROJECTS)
-    return INITIAL_PROJECTS
+    state = json.loads(json.dumps(INITIAL_PROJECTS))
+    save_state(state)
+    return state
 
 def save_state(state):
-    with open(STATE_FILE, "w", encoding="utf-8") as f:
-        json.dump(state, f, indent=2)
+    try:
+        os.makedirs(os.path.dirname(STATE_FILE), exist_ok=True)
+        with open(STATE_FILE, "w", encoding="utf-8") as f:
+            json.dump(state, f, indent=2)
+    except OSError:
+        pass
 
 COST_DELAY_RATES = {
     "DIRECT_HERITAGE_CONFLICT": {"lakhs_per_km": 4.50, "base_days": 45, "protocol": "Salvage Excavation / NMA NOC + Alignment Deflection Study"},
@@ -212,7 +227,6 @@ def run_spatial_engine(surveys: list[dict], route_geom_dict: dict, engineering_t
             total_est_lakhs += est_cost
             max_delay_days = max(max_delay_days, rate["base_days"])
 
-            # Compute start/end chainage along route
             start_km = round(route_geom_m.project(inter.boundary.geoms[0] if hasattr(inter.boundary, "geoms") and len(inter.boundary.geoms) > 0 else inter.centroid) / 1000.0, 2)
 
             results.append({
@@ -269,7 +283,8 @@ def list_projects():
 
 @app.post("/api/reset-state")
 def reset_all_state():
-    save_state(INITIAL_PROJECTS)
+    state = json.loads(json.dumps(INITIAL_PROJECTS))
+    save_state(state)
     return {"status": "reset"}
 
 @app.post("/api/simulate/{project_id}")
@@ -296,13 +311,11 @@ def simulate_corridor(project_id: str, payload: dict = Body(...)):
 
 @app.post("/api/suggest-deflection/{project_id}")
 def suggest_deflection_bypass(project_id: str, payload: dict = Body(...)):
-    """Computes a geometric deflection alignment avoiding POSITIVE heritage buffer zones."""
     db = load_state()
     proj = db[project_id]
     route_coords = list(proj["revised_route"]["geometry"]["coordinates"])
     buffer_m = int(payload.get("buffer_meters", 150))
 
-    # Deflect waypoints that fall inside POSITIVE survey polygons
     deflected_coords = []
     for lon, lat in route_coords:
         pt_m = transform(PROJECT_TO_METERS, shape({"type": "Point", "coordinates": [lon, lat]}))
@@ -311,7 +324,6 @@ def suggest_deflection_bypass(project_id: str, payload: dict = Body(...)):
             if feat.get("geometry") and feat["properties"]["finding_type"] == "POSITIVE":
                 poly_m = transform(PROJECT_TO_METERS, shape(feat["geometry"])).buffer(buffer_m + 150)
                 if poly_m.contains(pt_m):
-                    # Shift southeast outside the statutory exclusion zone
                     minx, miny, maxx, maxy = poly_m.bounds
                     bypass_pt_wgs = transform(PROJECT_TO_WGS84, shape({"type": "Point", "coordinates": [maxx + 200, miny - 200]}))
                     deflected_coords.append([round(bypass_pt_wgs.x, 5), round(bypass_pt_wgs.y, 5)])
@@ -346,11 +358,17 @@ def attach_polygon(project_id: str, evidence_id: str, payload: dict = Body(...))
 
 @app.get("/api/demo-pdf")
 def get_demo_pdf():
-    return FileResponse("data/synthetic_survey_report_2018.pdf", media_type="application/pdf")
+    for candidate in [
+        os.path.join(BASE_DIR, "synthetic_survey_report_2018.pdf"),
+        os.path.join(ROOT_DIR, "data", "synthetic_survey_report_2018.pdf"),
+    ]:
+        if os.path.exists(candidate):
+            return FileResponse(candidate, media_type="application/pdf")
+    return {"error": "Demo PDF not found"}
 
 @app.post("/api/ingest-pdf/{project_id}")
 async def ingest_pdf(project_id: str, file: UploadFile = File(...)):
-    save_path = os.path.join("uploads", file.filename)
+    save_path = os.path.join(UPLOAD_DIR, file.filename)
     with open(save_path, "wb") as buffer:
         shutil.copyfileobj(file.file, buffer)
     extracted = extract_evidence_from_pdf(save_path)
