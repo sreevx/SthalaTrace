@@ -1,0 +1,506 @@
+{
+  "malabar-rail": {
+    "id": "malabar-rail",
+    "name": "Malabar Hinterland Semi-High-Speed Rail Spur",
+    "region": "Kozhikode \u2013 Malappuram, Kerala",
+    "client": "Southern Rail Infrastructure Corp.",
+    "default_engineering": "Deep Cut-and-Fill",
+    "surveys": [
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-101",
+          "zone_id": "SZ-01",
+          "source_doc": "synthetic_survey_report_2018.pdf",
+          "page_number": 2,
+          "survey_date": "2018-08-16",
+          "methodology": "Systematic Pedestrian Walkover (25m)",
+          "finding_type": "POSITIVE",
+          "summary": "Iron Age BRW pottery & laterite hero-stones (KL-KZD-014)",
+          "verbatim_quote": "POSITIVE FINDING (Site ID: KL-KZD-014): At coordinates 11.2015 N, 75.8320 E, two weathered laterite hero-stones (Veerakkal) and scattered Iron Age BRW potsherds were documented.",
+          "limitations": "Surface walkover only; statutory exclusion buffer required",
+          "visibility_poor": false,
+          "verified": true,
+          "verified_by": "Dr. R. Menon (Senior Archaeologist)"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.815,
+                11.19
+              ],
+              [
+                75.845,
+                11.19
+              ],
+              [
+                75.845,
+                11.215
+              ],
+              [
+                75.815,
+                11.215
+              ],
+              [
+                75.815,
+                11.19
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-102",
+          "zone_id": "SZ-02",
+          "source_doc": "synthetic_survey_report_2018.pdf",
+          "page_number": 3,
+          "survey_date": "2018-09-04",
+          "methodology": "Pedestrian Walkover (40m)",
+          "finding_type": "NEGATIVE",
+          "summary": "No archaeological findings recorded across laterite plateau",
+          "verbatim_quote": "NO ARCHAEOLOGICAL FINDINGS RECORDED. Valid for shallow surface embankment works; deep cut-and-fill exceeding 2.0m depth would penetrate undisturbed horizons.",
+          "limitations": "Valid for surface works only; sub-surface >2m unassessed",
+          "visibility_poor": false,
+          "verified": true,
+          "verified_by": "Dr. R. Menon (Senior Archaeologist)"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.845,
+                11.215
+              ],
+              [
+                75.875,
+                11.215
+              ],
+              [
+                75.875,
+                11.245
+              ],
+              [
+                75.845,
+                11.245
+              ],
+              [
+                75.845,
+                11.215
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-103",
+          "zone_id": "SZ-03",
+          "source_doc": "synthetic_survey_report_2018.pdf",
+          "page_number": 4,
+          "survey_date": "2018-09-21",
+          "methodology": "Opportunistic Track Reconnaissance",
+          "finding_type": "NEGATIVE",
+          "summary": "No surface findings recorded, but <15% visibility due to monsoon",
+          "verbatim_quote": "Ground Visibility: SEVERELY POOR (<15% visibility due to dense post-monsoon undergrowth and waterlogged rubber plantations).",
+          "limitations": "Severely poor visibility (<15%); 80% off-track uninspected",
+          "visibility_poor": true,
+          "verified": false,
+          "verified_by": null
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.875,
+                11.245
+              ],
+              [
+                75.905,
+                11.245
+              ],
+              [
+                75.905,
+                11.275
+              ],
+              [
+                75.875,
+                11.275
+              ],
+              [
+                75.875,
+                11.245
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "original_route": {
+      "type": "Feature",
+      "properties": {
+        "name": "2018 Baseline Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.82,
+            11.195
+          ],
+          [
+            75.84,
+            11.21
+          ],
+          [
+            75.86,
+            11.23
+          ],
+          [
+            75.89,
+            11.26
+          ]
+        ]
+      }
+    },
+    "revised_route": {
+      "type": "Feature",
+      "properties": {
+        "name": "2026 Revised Alignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.822,
+            11.196
+          ],
+          [
+            75.832,
+            11.202
+          ],
+          [
+            75.855,
+            11.225
+          ],
+          [
+            75.885,
+            11.235
+          ],
+          [
+            75.91,
+            11.255
+          ],
+          [
+            75.895,
+            11.268
+          ]
+        ]
+      }
+    }
+  },
+  "nh66-bypass": {
+    "id": "nh66-bypass",
+    "name": "NH-66 Beypore\u2013Feroke 6-Lane Viaduct & Bypass",
+    "region": "Chaliyar River Basin, Kozhikode",
+    "client": "National Highways Corridor Authority",
+    "default_engineering": "Deep Pier Piling (>12m)",
+    "surveys": [
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-201",
+          "zone_id": "CH-NORTH",
+          "source_doc": "NH66_EIA_Addendum_2022.pdf",
+          "page_number": 11,
+          "survey_date": "2022-02-14",
+          "methodology": "Systematic Transect + GPR Sub-Surface Scan",
+          "finding_type": "NEGATIVE",
+          "summary": "No archaeological anomalies detected in alluvial terrace (2022 dry season)",
+          "verbatim_quote": "Combined 20m pedestrian transect and 400MHz GPR profiling confirmed sterile riverine sand/clay strata down to 4.5m.",
+          "limitations": "Valid for standard embankments; deep caissons >10m require watching brief",
+          "visibility_poor": false,
+          "verified": true,
+          "verified_by": "A. Nair (EIA Lead)"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.805,
+                11.175
+              ],
+              [
+                75.83,
+                11.175
+              ],
+              [
+                75.83,
+                11.195
+              ],
+              [
+                75.805,
+                11.195
+              ],
+              [
+                75.805,
+                11.175
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-202",
+          "zone_id": "CH-PORT",
+          "source_doc": "Chaliyar_Heritage_Recon_2015.pdf",
+          "page_number": 7,
+          "survey_date": "2015-11-19",
+          "methodology": "Coastal & Riverbank Walkover",
+          "finding_type": "POSITIVE",
+          "summary": "Medieval maritime trade ceramics (Chinese Celadon & West Asian glazed ware)",
+          "verbatim_quote": "Dense concentration of 13th-15th century maritime trade sherds eroding along the southern Chaliyar creek bank.",
+          "limitations": "Tidal siltation obscures full inland extent of port settlement",
+          "visibility_poor": false,
+          "verified": true,
+          "verified_by": "A. Nair (EIA Lead)"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                75.81,
+                11.155
+              ],
+              [
+                75.838,
+                11.155
+              ],
+              [
+                75.838,
+                11.175
+              ],
+              [
+                75.81,
+                11.175
+              ],
+              [
+                75.81,
+                11.155
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "original_route": {
+      "type": "Feature",
+      "properties": {
+        "name": "2022 Approved Widening"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.812,
+            11.192
+          ],
+          [
+            75.818,
+            11.18
+          ],
+          [
+            75.825,
+            11.168
+          ]
+        ]
+      }
+    },
+    "revised_route": {
+      "type": "Feature",
+      "properties": {
+        "name": "2026 Eastern Bridge Realignment"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.814,
+            11.193
+          ],
+          [
+            75.824,
+            11.182
+          ],
+          [
+            75.833,
+            11.168
+          ],
+          [
+            75.846,
+            11.156
+          ]
+        ]
+      }
+    }
+  },
+  "palakkad-freight": {
+    "id": "palakkad-freight",
+    "name": "Palakkad Gap Industrial Freight & Utility Corridor",
+    "region": "Walayar \u2013 Kanjikode Pass, Kerala",
+    "client": "Industrial Corridor Development Board",
+    "default_engineering": "Surface Embankment",
+    "surveys": [
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-301",
+          "zone_id": "PLK-WEST",
+          "source_doc": "Walayar_Megalithic_Survey_2021.pdf",
+          "page_number": 5,
+          "survey_date": "2021-03-10",
+          "methodology": "Systematic Drone Photogrammetry + Pedestrian Walkover",
+          "finding_type": "NEGATIVE",
+          "summary": "Cleared dry-season laterite scrubland; zero megalithic circles observed",
+          "verbatim_quote": "High-visibility March transect confirmed disturbed scrubland free of surface cairn circles or urn burials.",
+          "limitations": "Surface walkover only",
+          "visibility_poor": false,
+          "verified": true,
+          "verified_by": "S. Krishnan (Field Director)"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.72,
+                10.78
+              ],
+              [
+                76.76,
+                10.78
+              ],
+              [
+                76.76,
+                10.81
+              ],
+              [
+                76.72,
+                10.81
+              ],
+              [
+                76.72,
+                10.78
+              ]
+            ]
+          ]
+        }
+      },
+      {
+        "type": "Feature",
+        "properties": {
+          "evidence_id": "EV-302",
+          "zone_id": "PLK-PASS",
+          "source_doc": "Walayar_Megalithic_Survey_2021.pdf",
+          "page_number": 9,
+          "survey_date": "2021-03-18",
+          "methodology": "Pedestrian Walkover (20m)",
+          "finding_type": "POSITIVE",
+          "summary": "Cluster of 14 Iron Age Cist Burials & Menhir alignment (PLK-WLY-08)",
+          "verbatim_quote": "Intact megalithic cist burial complex spanning 220m north of the existing rail line.",
+          "limitations": "Requires strict statutory buffer and alignment deflection",
+          "visibility_poor": false,
+          "verified": true,
+          "verified_by": "S. Krishnan (Field Director)"
+        },
+        "geometry": {
+          "type": "Polygon",
+          "coordinates": [
+            [
+              [
+                76.76,
+                10.79
+              ],
+              [
+                76.795,
+                10.79
+              ],
+              [
+                76.795,
+                10.82
+              ],
+              [
+                76.76,
+                10.82
+              ],
+              [
+                76.76,
+                10.79
+              ]
+            ]
+          ]
+        }
+      }
+    ],
+    "original_route": {
+      "type": "Feature",
+      "properties": {
+        "name": "2021 Baseline Freight Line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.725,
+            10.795
+          ],
+          [
+            76.755,
+            10.795
+          ],
+          [
+            76.775,
+            10.785
+          ]
+        ]
+      }
+    },
+    "revised_route": {
+      "type": "Feature",
+      "properties": {
+        "name": "2026 Northern Industrial Spur"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            76.725,
+            10.795
+          ],
+          [
+            76.755,
+            10.802
+          ],
+          [
+            76.78,
+            10.808
+          ],
+          [
+            76.815,
+            10.815
+          ]
+        ]
+      }
+    }
+  }
+}

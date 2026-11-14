@@ -1,0 +1,41 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "2026 Revised Alignment",
+        "engineering_type": "Deep Cut-and-Fill"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [
+          [
+            75.822,
+            11.196
+          ],
+          [
+            75.832,
+            11.202
+          ],
+          [
+            75.855,
+            11.225
+          ],
+          [
+            75.885,
+            11.235
+          ],
+          [
+            75.91,
+            11.255
+          ],
+          [
+            75.895,
+            11.268
+          ]
+        ]
+      }
+    }
+  ]
+}

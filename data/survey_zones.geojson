@@ -1,0 +1,131 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "evidence_id": "EV-001",
+        "zone_id": "SZ-01",
+        "source_doc": "synthetic_survey_report_2018.pdf",
+        "page_number": 2,
+        "survey_date": "2018-08-16",
+        "methodology": "Systematic Pedestrian Walkover (25m)",
+        "finding_type": "POSITIVE",
+        "summary": "Iron Age BRW pottery & hero-stones (KL-KZD-014)",
+        "limitations": "Surface walkover only; 150m exclusion buffer required",
+        "visibility_poor": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.815,
+              11.19
+            ],
+            [
+              75.845,
+              11.19
+            ],
+            [
+              75.845,
+              11.215
+            ],
+            [
+              75.815,
+              11.215
+            ],
+            [
+              75.815,
+              11.19
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "evidence_id": "EV-002",
+        "zone_id": "SZ-02",
+        "source_doc": "synthetic_survey_report_2018.pdf",
+        "page_number": 3,
+        "survey_date": "2018-09-04",
+        "methodology": "Pedestrian Walkover (40m)",
+        "finding_type": "NEGATIVE",
+        "summary": "No archaeological findings recorded across laterite plateau",
+        "limitations": "Valid for surface works only; sub-surface >2m unassessed",
+        "visibility_poor": false
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.845,
+              11.215
+            ],
+            [
+              75.875,
+              11.215
+            ],
+            [
+              75.875,
+              11.245
+            ],
+            [
+              75.845,
+              11.245
+            ],
+            [
+              75.845,
+              11.215
+            ]
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "evidence_id": "EV-003",
+        "zone_id": "SZ-03",
+        "source_doc": "synthetic_survey_report_2018.pdf",
+        "page_number": 4,
+        "survey_date": "2018-09-21",
+        "methodology": "Opportunistic Track Reconnaissance",
+        "finding_type": "NEGATIVE",
+        "summary": "No surface findings recorded, but <15% visibility due to monsoon",
+        "limitations": "Severely poor visibility (<15%); 80% off-track uninspected; >7 yrs old",
+        "visibility_poor": true
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          [
+            [
+              75.875,
+              11.245
+            ],
+            [
+              75.905,
+              11.245
+            ],
+            [
+              75.905,
+              11.275
+            ],
+            [
+              75.875,
+              11.275
+            ],
+            [
+              75.875,
+              11.245
+            ]
+          ]
+        ]
+      }
+    }
+  ]
+}
